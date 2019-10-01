@@ -47,7 +47,7 @@ public class TicketService {
      * @throws ObjectNotFoundException caso o Ticket nao exista.
      * @return retorna a instancia do objeto Ticket encontrado.
      * */
-    public Ticket buscaPorId(Long id) {
+    public Ticket buscarPorId(Long id) {
         Optional<Ticket> retorno = ticketRepository.findById(id);
 
         return retorno.orElseThrow(() -> new ObjectNotFoundException("Ticket nao encontrado Id:" + id));
@@ -111,7 +111,7 @@ public class TicketService {
         LocalDateTime horarioSaida = LocalDateTime.now();
 
         // Buscar ticket
-        Ticket ticket = buscaPorId(id);
+        Ticket ticket = buscarPorId(id);
 
         if (ticket.getSaida() == null) {
             // Liberar vaga

@@ -28,6 +28,19 @@ public class VagaService {
     }
 
     /**
+     * Busca Vaga utilizando ID.
+     *
+     * @param id id do Vaga a ser buscado.
+     * @throws ObjectNotFoundException caso o Vaga nao exista.
+     * @return retorna a instancia do objeto Vaga encontrado.
+     * */
+    public Vaga buscarPorId(Long id) {
+        Optional<Vaga> retorno = vagaRepository.findById(id);
+
+        return retorno.orElseThrow(() -> new ObjectNotFoundException("Vaga nao encontrada Id: " + id));
+    }
+
+    /**
      * Busca todos os Vagas.
      *
      * @return lista com os Vagas encontrados.

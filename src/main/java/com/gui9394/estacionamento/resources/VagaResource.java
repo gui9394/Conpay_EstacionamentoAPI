@@ -13,32 +13,32 @@ import java.util.List;
 @RequestMapping(value = "/vagas")
 public class VagaResource {
 
-    private VagaService service;
-
-    @GetMapping
-    public ResponseEntity<List<Vaga>> listar() {
-        List<Vaga> vagas = service.buscarTodos();
-
-        return ResponseEntity.ok(vagas);
-    }
+    private VagaService vagaService;
 
     @GetMapping(params = "id")
-    public ResponseEntity<Vaga> buscarPorId(@PathVariable Long id) {
-        Vaga vaga = service.buscarDisponivelPorId(id);
+    public ResponseEntity<Vaga> buscarPorId(@RequestParam("id") Long id) {
+        Vaga vaga = vagaService.buscarPorId(id);
 
         return ResponseEntity.ok(vaga);
     }
 
+    @GetMapping
+    public ResponseEntity<List<Vaga>> listar() {
+        List<Vaga> vagas = vagaService.buscarTodos();
+
+        return ResponseEntity.ok(vagas);
+    }
+
     @GetMapping(value = "/disponiveis")
     public ResponseEntity<List<Vaga>> listarDisponiveis() {
-        List<Vaga> vagas = service.buscarVagasDisponiveis();
+        List<Vaga> vagas = vagaService.buscarVagasDisponiveis();
 
         return ResponseEntity.ok(vagas);
     }
 
     @GetMapping(value = "/disponiveis/quantidade")
     public ResponseEntity<Integer> quantidadeDisponivel() {
-        Integer quantidade = service.quantidadeDisponivel();
+        Integer quantidade = vagaService.quantidadeDisponivel();
 
         return ResponseEntity.ok(quantidade);
     }

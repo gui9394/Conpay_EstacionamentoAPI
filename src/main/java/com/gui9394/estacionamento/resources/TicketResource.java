@@ -16,6 +16,13 @@ public class TicketResource {
     // Services
     private TicketService ticketService;
 
+    @GetMapping(params = "id")
+    public ResponseEntity<Ticket> buscarPorId(@RequestParam("id") Long id) {
+        Ticket ticket = ticketService.buscarPorId(id);
+
+        return ResponseEntity.ok(ticket);
+    }
+
     @GetMapping
     public ResponseEntity<List<Ticket>> listar() {
         List<Ticket> tickets = ticketService.buscarTodos();
