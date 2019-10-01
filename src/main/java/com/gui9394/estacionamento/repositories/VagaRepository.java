@@ -1,7 +1,7 @@
-package com.gui9394.parking.repositories;
+package com.gui9394.estacionamento.repositories;
 
-import com.gui9394.parking.entities.Vaga;
-import com.gui9394.parking.enumerations.EstadoVaga;
+import com.gui9394.estacionamento.entities.Vaga;
+import com.gui9394.estacionamento.enumerations.EstadoVaga;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

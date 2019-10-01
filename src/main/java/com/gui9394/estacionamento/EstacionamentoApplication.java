@@ -1,7 +1,7 @@
-package com.gui9394.parking;
+package com.gui9394.estacionamento;
 
-import com.gui9394.parking.entities.Vaga;
-import com.gui9394.parking.services.VagaService;
+import com.gui9394.estacionamento.entities.Vaga;
+import com.gui9394.estacionamento.services.VagaService;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,7 +13,7 @@ import org.springframework.context.annotation.PropertySource;
 @SpringBootApplication
 @RequiredArgsConstructor
 @PropertySource("classpath:vaga.properties")
-public class ParkingApiApplication implements CommandLineRunner{
+public class EstacionamentoApplication implements CommandLineRunner{
 
 	@NonNull
 	private VagaService vagaService;
@@ -22,7 +22,7 @@ public class ParkingApiApplication implements CommandLineRunner{
 	private int quantidade;
 
 	public static void main(String[] args) {
-		SpringApplication.run(ParkingApiApplication.class, args);
+		SpringApplication.run(EstacionamentoApplication.class, args);
 	}
 
 	@Override

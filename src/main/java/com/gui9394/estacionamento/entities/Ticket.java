@@ -1,4 +1,4 @@
-package com.gui9394.parking.entities;
+package com.gui9394.estacionamento.entities;
 
 import lombok.*;
 

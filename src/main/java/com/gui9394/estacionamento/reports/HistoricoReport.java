@@ -1,4 +1,4 @@
-package com.gui9394.parking.reports;
+package com.gui9394.estacionamento.reports;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

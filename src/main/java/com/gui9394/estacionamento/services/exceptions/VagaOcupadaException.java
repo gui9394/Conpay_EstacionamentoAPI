@@ -1,6 +1,6 @@
-package com.gui9394.parking.services.exceptions;
+package com.gui9394.estacionamento.services.exceptions;
 
-import com.gui9394.parking.entities.Vaga;
+import com.gui9394.estacionamento.entities.Vaga;
 
 public class VagaOcupadaException extends RuntimeException {
 

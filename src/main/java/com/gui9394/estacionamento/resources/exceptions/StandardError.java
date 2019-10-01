@@ -1,4 +1,4 @@
-package com.gui9394.parking.resources.exceptions;
+package com.gui9394.estacionamento.resources.exceptions;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

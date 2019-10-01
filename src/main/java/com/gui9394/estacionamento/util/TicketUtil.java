@@ -1,6 +1,6 @@
-package com.gui9394.parking.util;
+package com.gui9394.estacionamento.util;
 
-import com.gui9394.parking.entities.Ticket;
+import com.gui9394.estacionamento.entities.Ticket;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;

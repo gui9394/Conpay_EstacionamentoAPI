@@ -1,7 +1,7 @@
-package com.gui9394.parking.resources;
+package com.gui9394.estacionamento.resources;
 
-import com.gui9394.parking.entities.Ticket;
-import com.gui9394.parking.services.TicketService;
+import com.gui9394.estacionamento.entities.Ticket;
+import com.gui9394.estacionamento.services.TicketService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -1,4 +1,4 @@
-package com.gui9394.parking.services.exceptions;
+package com.gui9394.estacionamento.services.exceptions;
 
 public class ObjectNotFoundException extends RuntimeException {
 

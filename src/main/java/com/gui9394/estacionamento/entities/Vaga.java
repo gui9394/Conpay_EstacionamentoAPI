@@ -1,6 +1,6 @@
-package com.gui9394.parking.entities;
+package com.gui9394.estacionamento.entities;
 
-import com.gui9394.parking.enumerations.EstadoVaga;
+import com.gui9394.estacionamento.enumerations.EstadoVaga;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

@@ -1,13 +1,12 @@
-package com.gui9394.parking.services;
+package com.gui9394.estacionamento.services;
 
-import com.gui9394.parking.entities.Ticket;
-import com.gui9394.parking.entities.Vaga;
-import com.gui9394.parking.enumerations.EstadoVaga;
-import com.gui9394.parking.repositories.TicketRepository;
-import com.gui9394.parking.services.exceptions.ObjectNotFoundException;
-import com.gui9394.parking.services.exceptions.TicketFinalizadoException;
-import com.gui9394.parking.services.exceptions.VagaOcupadaException;
-import com.gui9394.parking.util.TicketUtil;
+import com.gui9394.estacionamento.entities.Ticket;
+import com.gui9394.estacionamento.entities.Vaga;
+import com.gui9394.estacionamento.enumerations.EstadoVaga;
+import com.gui9394.estacionamento.repositories.TicketRepository;
+import com.gui9394.estacionamento.services.exceptions.ObjectNotFoundException;
+import com.gui9394.estacionamento.services.exceptions.TicketFinalizadoException;
+import com.gui9394.estacionamento.util.TicketUtil;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
