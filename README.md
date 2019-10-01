@@ -7,7 +7,7 @@ Repositório: [GitHub](https://github.com/dangellys-conpay/desafio-estacionament
 ## Descrição  
 API para gerenciamento de carros de em um estacionamento.  
 
-Documentação da API: [GitHub](https://github.com/gui9394/Conpay_EstacionamentoAPI/blob/development/ENDPOINTS.md)
+Documentação da API: [GitHub](https://github.com/gui9394/Conpay_EstacionamentoAPI/blob/production/ENDPOINTS.md)
 
 ## Tecnologias  
 - JDK  
@@ -17,7 +17,7 @@ Documentação da API: [GitHub](https://github.com/gui9394/Conpay_Estacionamento
 - Lombok  
 
 ## Execução  
-Utilizando a ferramenta [Travis CI](https://travis-ci.com/) para integração contínua e implantação contínua, disponibilizei a aplicação no [Heroku](https://www.heroku.com/) na seguinte URL: conpay-estacionamentoapi.herokuapp.com
+Utilizando a ferramenta [Travis CI](https://travis-ci.com/) para integração contínua e implantação contínua, disponibilizei a aplicação no [Heroku](https://www.heroku.com/) na seguinte URL: https://conpay-estacionamentoapi.herokuapp.com
 
 Caso queira executar o projeto localmente as instruções a seguir:
 
