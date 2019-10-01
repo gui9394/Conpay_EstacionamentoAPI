@@ -7,4 +7,4 @@ deploy:
   app: conpay-estacionamentoapi
   on:
     repo: gui9394/Conpay_EstacionamentoAPI
-    branch: development
+    branch: production
