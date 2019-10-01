@@ -37,6 +37,12 @@ public class TicketUtil {
         return valor;
     }
 
+    /**
+     * Calculo de valor do Ticket.
+     *
+     * @param ticket Ticket que o valor será calculado.
+     * @return valor a ser pago.
+     * */
     public double calcularValor(Ticket ticket) {
         long tempo = Duration.between(ticket.getEntrada(), ticket.getSaida()).toMinutes() - tempoGratuito;
         double valor = 0;

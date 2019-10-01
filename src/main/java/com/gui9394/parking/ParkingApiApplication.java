@@ -30,8 +30,7 @@ public class ParkingApiApplication implements CommandLineRunner{
 		// Criar as vagas caso nao na base de dados
 		if (vagaService.buscarTodos().size() == 0) {
 			for (int i = 0; i < quantidade; i++) {
-
-				System.out.println(vagaService.salvar(new Vaga(String.valueOf(i + 1))));
+				vagaService.salvar(new Vaga(String.valueOf(i + 1)));
 			}
 		}
 	}

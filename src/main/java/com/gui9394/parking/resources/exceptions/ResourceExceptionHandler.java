@@ -1,6 +1,7 @@
 package com.gui9394.parking.resources.exceptions;
 
 import com.gui9394.parking.services.exceptions.ObjectNotFoundException;
+import com.gui9394.parking.services.exceptions.TicketFinalizadoException;
 import com.gui9394.parking.services.exceptions.VagaOcupadaException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,4 +27,12 @@ public class ResourceExceptionHandler {
 
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
     }
+
+    @ExceptionHandler(TicketFinalizadoException.class)
+    public ResponseEntity<StandardError> ticketFinalizadoException(TicketFinalizadoException exception, HttpServletRequest request) {
+        StandardError error = new StandardError(HttpStatus.BAD_REQUEST.value(), exception.getMessage(), LocalDateTime.now());
+
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
+    }
+
 }

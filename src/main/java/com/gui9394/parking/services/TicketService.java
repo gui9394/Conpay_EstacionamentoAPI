@@ -5,6 +5,8 @@ import com.gui9394.parking.entities.Vaga;
 import com.gui9394.parking.enumerations.EstadoVaga;
 import com.gui9394.parking.repositories.TicketRepository;
 import com.gui9394.parking.services.exceptions.ObjectNotFoundException;
+import com.gui9394.parking.services.exceptions.TicketFinalizadoException;
+import com.gui9394.parking.services.exceptions.VagaOcupadaException;
 import com.gui9394.parking.util.TicketUtil;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -112,15 +114,20 @@ public class TicketService {
         // Buscar ticket
         Ticket ticket = buscaPorId(id);
 
-        // Liberar vaga
-        Vaga vaga = ticket.getVaga();
-        vaga.setEstado(EstadoVaga.LIVRE);
-        vaga = vagaService.salvar(vaga);
+        if (ticket.getSaida() == null) {
+            // Liberar vaga
+            Vaga vaga = ticket.getVaga();
+            vaga.setEstado(EstadoVaga.LIVRE);
+            vaga = vagaService.salvar(vaga);
 
-        // Calcular valor do Ticket
-        ticket.setSaida(horarioSaida);
-        ticket.setValor(ticketUtil.calcularValor(ticket));
+            // Calcular valor do Ticket
+            ticket.setSaida(horarioSaida);
+            ticket.setValor(ticketUtil.calcularValor(ticket));
+            System.out.println("Continua");
 
-        return salvar(ticket);
+            return salvar(ticket);
+        } else {
+            throw new TicketFinalizadoException(ticket);
+        }
     }
 }

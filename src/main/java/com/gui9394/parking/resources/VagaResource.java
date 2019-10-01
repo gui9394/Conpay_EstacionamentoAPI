@@ -15,18 +15,18 @@ public class VagaResource {
 
     private VagaService service;
 
-    @GetMapping(value = "/{id}")
-    public ResponseEntity<Vaga> buscarPorId(@PathVariable Long id) {
-        Vaga vaga = service.buscarDisponivelPorId(id);
-
-        return ResponseEntity.ok(vaga);
-    }
-
     @GetMapping
     public ResponseEntity<List<Vaga>> listar() {
         List<Vaga> vagas = service.buscarTodos();
 
         return ResponseEntity.ok(vagas);
+    }
+
+    @GetMapping(params = "id")
+    public ResponseEntity<Vaga> buscarPorId(@PathVariable Long id) {
+        Vaga vaga = service.buscarDisponivelPorId(id);
+
+        return ResponseEntity.ok(vaga);
     }
 
     @GetMapping(value = "/disponiveis")
