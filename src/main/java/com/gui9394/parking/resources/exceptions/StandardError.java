@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -15,6 +16,6 @@ public class StandardError implements Serializable {
 
     private Integer status;
     private String message;
-    private Long time;
+    private LocalDateTime timestamp;
 
 }

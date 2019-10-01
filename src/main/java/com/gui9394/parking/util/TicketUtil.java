@@ -18,11 +18,11 @@ public class TicketUtil {
     @Value("${tempo_padrao}")
     private long tempoPadrao;
 
-    @Value("${valor_padrao}")
-    private double valorPadrao;
-
     @Value("${tempo_extra}")
     private long tempoExtra;
+
+    @Value("${valor_padrao}")
+    private double valorPadrao;
 
     @Value("${valor_extra}")
     private double valorExtra;

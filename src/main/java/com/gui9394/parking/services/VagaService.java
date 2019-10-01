@@ -1,27 +1,22 @@
 package com.gui9394.parking.services;
 
 import com.gui9394.parking.entities.Vaga;
-import com.gui9394.parking.enumerations.VagaEstado;
+import com.gui9394.parking.enumerations.EstadoVaga;
 import com.gui9394.parking.repositories.VagaRepository;
 import com.gui9394.parking.services.exceptions.ObjectNotFoundException;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
+import com.gui9394.parking.services.exceptions.VagaOcupadaException;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
-@RequiredArgsConstructor
+@AllArgsConstructor
 @Service
 public class VagaService {
 
     // Repositories
-    @NonNull
     private VagaRepository vagaRepository;
-
-    @Value("${vagas.quantidade}")
-    private int quantidade;
 
     /**
      * Salva Vaga.
@@ -47,23 +42,40 @@ public class VagaService {
      * @return lista com as Vagas com estado de livre encontradas.
     * */
     public List<Vaga> buscarVagasDisponiveis() {
-        return vagaRepository.findByEstado(VagaEstado.LIVRE);
+        return vagaRepository.findByEstado(EstadoVaga.LIVRE);
     }
 
     /**
      * Busca Vaga utilizando ID.
      *
      * @param id id do Vaga a ser buscado.
+     * @throws VagaOcupadaException caso a ja Vaga estiver ocupada.
      * @throws ObjectNotFoundException caso o Vaga nao exista.
      * @return retorna a instancia do objeto Vaga encontrado.
      * */
-    public Vaga buscarPorId(Long id) {
+    public Vaga buscarDisponivelPorId(Long id) {
         Optional<Vaga> retorno = vagaRepository.findById(id);
 
-        return retorno.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado! Id: " + id + ", Tipo: " + Vaga.class.getName()));
+        retorno.orElseThrow(() ->
+            new ObjectNotFoundException("Vaga nao encontrada Id: " + id)
+        );
+
+        retorno.ifPresent(vaga -> {
+            if (vaga.getEstado() == EstadoVaga.OCUPADA) {
+                throw new VagaOcupadaException(vaga);
+            }
+        });
+
+        return retorno.get();
     }
 
+    /**
+     * Retorna a quantidade de Vagas disponiveis.
+     *
+     * @return quantidade de e Vagas disponiveis.
+     * */
     public Integer quantidadeDisponivel() {
-        return vagaRepository.countByEstado(VagaEstado.LIVRE);
+        return vagaRepository.countByEstado(EstadoVaga.LIVRE);
     }
+
 }

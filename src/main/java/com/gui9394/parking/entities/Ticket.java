@@ -35,4 +35,5 @@ public class Ticket implements Serializable {
         this.entrada = entrada;
         this.valor = 0D;
     }
+    
 }

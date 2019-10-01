@@ -2,24 +2,22 @@ package com.gui9394.parking.resources;
 
 import com.gui9394.parking.entities.Vaga;
 import com.gui9394.parking.services.VagaService;
+import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@AllArgsConstructor
 @RestController
 @RequestMapping(value = "/vagas")
 public class VagaResource {
 
     private VagaService service;
 
-    public VagaResource(VagaService service) {
-        this.service = service;
-    }
-
     @GetMapping(value = "/{id}")
     public ResponseEntity<Vaga> buscarPorId(@PathVariable Long id) {
-        Vaga vaga = service.buscarPorId(id);
+        Vaga vaga = service.buscarDisponivelPorId(id);
 
         return ResponseEntity.ok(vaga);
     }

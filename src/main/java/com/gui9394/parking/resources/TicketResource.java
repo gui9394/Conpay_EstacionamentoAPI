@@ -1,23 +1,20 @@
 package com.gui9394.parking.resources;
 
-
 import com.gui9394.parking.entities.Ticket;
 import com.gui9394.parking.services.TicketService;
+import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@AllArgsConstructor
 @RestController
 @RequestMapping(value = "/tickets")
 public class TicketResource {
 
     // Services
     private TicketService ticketService;
-
-    public TicketResource(TicketService ticketService) {
-        this.ticketService = ticketService;
-    }
 
     @GetMapping
     public ResponseEntity<List<Ticket>> listar() {
@@ -33,8 +30,8 @@ public class TicketResource {
         return ResponseEntity.ok(tickets);
     }
 
-    @PostMapping(value = "/emitir", params = "vaga")
-    public ResponseEntity<Ticket> emitir(@RequestParam("vaga") Long vagaId) {
+    @PostMapping(value = "/emitir", params = "vaga_id")
+    public ResponseEntity<Ticket> emitir(@RequestParam("vaga_id") Long vagaId) {
         Ticket ticket = ticketService.emitir(vagaId);
 
         return ResponseEntity.ok(ticket);

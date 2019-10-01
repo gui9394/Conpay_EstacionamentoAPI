@@ -1,6 +1,6 @@
 package com.gui9394.parking.entities;
 
-import com.gui9394.parking.enumerations.VagaEstado;
+import com.gui9394.parking.enumerations.EstadoVaga;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -23,11 +23,11 @@ public class Vaga implements Serializable {
 
     // Estado atual da vaga
     @Enumerated(EnumType.STRING)
-    private VagaEstado estado;
+    private EstadoVaga estado;
 
     public Vaga(String nome) {
         this.nome = nome;
-        this.estado = VagaEstado.LIVRE;
+        this.estado = EstadoVaga.LIVRE;
     }
 
 }

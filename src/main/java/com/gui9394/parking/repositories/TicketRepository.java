@@ -9,6 +9,8 @@ import java.util.List;
 @Repository
 public interface TicketRepository extends JpaRepository<Ticket, Long> {
 
+    List<Ticket> findBySaidaIsNotNull();
+
     List<Ticket> findBySaidaIsNull();
 
 }

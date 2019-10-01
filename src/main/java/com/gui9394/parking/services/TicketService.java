@@ -2,7 +2,7 @@ package com.gui9394.parking.services;
 
 import com.gui9394.parking.entities.Ticket;
 import com.gui9394.parking.entities.Vaga;
-import com.gui9394.parking.enumerations.VagaEstado;
+import com.gui9394.parking.enumerations.EstadoVaga;
 import com.gui9394.parking.repositories.TicketRepository;
 import com.gui9394.parking.services.exceptions.ObjectNotFoundException;
 import com.gui9394.parking.util.TicketUtil;
@@ -49,7 +49,7 @@ public class TicketService {
     public Ticket buscaPorId(Long id) {
         Optional<Ticket> retorno = ticketRepository.findById(id);
 
-        return retorno.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado! Id:" + id));
+        return retorno.orElseThrow(() -> new ObjectNotFoundException("Ticket nao encontrado Id:" + id));
     }
 
     /**
@@ -71,6 +71,15 @@ public class TicketService {
     }
 
     /**
+     * Busca todos os Tickets em aberto.
+     *
+     * @return lista de Tickets em aberto encontrados.
+     * */
+    public List<Ticket> buscarFinalizados() {
+        return ticketRepository.findBySaidaIsNotNull();
+    }
+
+    /**
      * Emitir novo Ticket.
      *
      * @param vagaId id da vaga que sera utilizada.
@@ -81,11 +90,11 @@ public class TicketService {
         LocalDateTime horarioEntrada = LocalDateTime.now();
 
         // Buscar vaga
-        Vaga vaga = vagaService.buscarPorId(vagaId);
+        Vaga vaga = vagaService.buscarDisponivelPorId(vagaId);
 
         // Ocupar vaga
-        vaga.setEstado(VagaEstado.OCUPADA);
-        vagaService.salvar(vaga);
+        vaga.setEstado(EstadoVaga.OCUPADA);
+        vaga = vagaService.salvar(vaga);
 
         return salvar(new Ticket(vaga, horarioEntrada));
     }
@@ -105,9 +114,8 @@ public class TicketService {
 
         // Liberar vaga
         Vaga vaga = ticket.getVaga();
-        vaga.setEstado(VagaEstado.LIVRE);
-        ticket.setVaga(null);
-        vagaService.salvar(vaga);
+        vaga.setEstado(EstadoVaga.LIVRE);
+        vaga = vagaService.salvar(vaga);
 
         // Calcular valor do Ticket
         ticket.setSaida(horarioSaida);
