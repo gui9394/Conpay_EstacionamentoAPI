@@ -1,9 +1,8 @@
-package com.gui9394.parking.domain;
+package com.gui9394.parking.entities;
 
-import lombok.AllArgsConstructor;
+import com.gui9394.parking.enumerations.VagaEstado;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 
 import java.io.Serializable;
 
@@ -11,7 +10,6 @@ import javax.persistence.*;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
 public class Vaga implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -21,15 +19,15 @@ public class Vaga implements Serializable {
     // Id da vaga
     private Long id;
 
-    // Nome vaga
     private String nome;
 
     // Estado atual da vaga
-    private Boolean ocupada;
+    @Enumerated(EnumType.STRING)
+    private VagaEstado estado;
 
-    public Vaga(@NonNull String nome) {
+    public Vaga(String nome) {
         this.nome = nome;
-        this.ocupada = false;
+        this.estado = VagaEstado.LIVRE;
     }
 
 }

@@ -1,4 +1,4 @@
-package com.gui9394.parking.domain;
+package com.gui9394.parking.entities;
 
 import lombok.*;
 
@@ -35,5 +35,4 @@ public class Ticket implements Serializable {
         this.entrada = entrada;
         this.valor = 0D;
     }
-
 }
